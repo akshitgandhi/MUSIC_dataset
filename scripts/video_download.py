@@ -65,6 +65,12 @@ def main():
 
 		print('Converting mp4 to mp3')
 		for i in val:
+			outdir = save_dir_audio+key.replace(' ', '_')+'/'+i
+			if not os.path.exists(outdir):
+				os.makedirs(outdir)
+			else:
+				print('Skipping the audio')
+				continue
 			video = VideoFileClip(save_dir_video+key.replace(' ', '_')+'/'+i+'.mp4')
 			video.audio.write_audiofile(save_dir_audio+key.replace(' ', '_')+'/'+i+'.mp3')
 			print('[Done] conversion for %s category, %s video', key, i)
