@@ -37,8 +37,6 @@ def main():
 	save_dir_audio = '/mnt/data/data/project_data/audio/'
 
 	for key, val in data.iteritems():
-		if('flute' in key):
-			continue
 		url_list = []
 		for i in val:
 			url_list.append('https://www.youtube.com/watch?v='+i)
@@ -50,7 +48,7 @@ def main():
 			if not os.path.exists(outdir):
 				os.makedirs(outdir)
 			else:
-				# We are skipping this video
+				print('Skipping the video')
 				continue
 
 			
