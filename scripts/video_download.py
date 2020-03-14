@@ -65,7 +65,7 @@ def main():
 
 		print('Converting mp4 to mp3')
 		for i in val:
-			outdir = save_dir_audio+key.replace(' ', '_')+'/'+i
+			outdir = save_dir_audio+key.replace(' ', '_')
 			if not os.path.exists(outdir):
 				os.makedirs(outdir)
 			else:
