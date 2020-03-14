@@ -49,6 +49,10 @@ def main():
 			outdir = save_dir_video+key.replace(' ', '_')+'/'+i
 			if not os.path.exists(outdir):
 				os.makedirs(outdir)
+			else:
+				# We are skipping this video
+				continue
+
 			
 			vidcap = cv2.VideoCapture(save_dir_video+key.replace(' ', '_')+'/'+i+'.mp4')
 			success,image = vidcap.read()
