@@ -1,3 +1,6 @@
+# ----------------------------------------------------------
+# Written by Akshit Gandhi (https://github.com/akshitgandhi)
+# ----------------------------------------------------------
 from __future__ import unicode_literals
 import youtube_dl
 import os
@@ -22,7 +25,7 @@ def main():
 		video_data = json.load(f)
 		data = video_data['videos']
 
-	save_dir = './'
+	save_dir = '/mnt/data/data/project_data/frames/'
 
 	for key, val in data.iteritems():
 		url_list = []
