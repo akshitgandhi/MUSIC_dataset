@@ -17,7 +17,10 @@ def downloadVideo(url_list, outdir):
 	}
 
 	with youtube_dl.YoutubeDL(ydl_opts_video) as ydl:
-		ydl.download(url_list)
+		try:
+			ydl.download(url_list)
+		except:
+			pass
 
 
 def main():
@@ -28,6 +31,8 @@ def main():
 	save_dir = '/mnt/data/data/project_data/frames/'
 
 	for key, val in data.iteritems():
+		if('flute' in key):
+			continue
 		url_list = []
 		for i in val:
 			url_list.append('https://www.youtube.com/watch?v='+i)
