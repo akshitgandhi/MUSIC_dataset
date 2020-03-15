@@ -22,10 +22,11 @@ def downloadVideo(url_list, outdir):
 	}
 
 	with youtube_dl.YoutubeDL(ydl_opts_video) as ydl:
-		try:
-			ydl.download(url_list)
-		except:
-			pass
+		for url in url_list:
+			try:
+				ydl.download(url)
+			except:
+				pass
 
 
 def main():
@@ -69,7 +70,7 @@ def main():
 			if not os.path.exists(outdir):
 				os.makedirs(outdir)
 			
-			if os.path.exists(outdir+i+'.mp3'):
+			if os.path.exists(save_dir_audio+key.replace(' ', '_')+'/'+i+'.mp3'):
 				print('Skipping the audio')
 				continue
 			
