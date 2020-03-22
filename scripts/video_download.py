@@ -23,8 +23,9 @@ def downloadVideo(url_list, outdir):
 
 	with youtube_dl.YoutubeDL(ydl_opts_video) as ydl:
 		for url in url_list:
+			temp = [url]
 			try:
-				ydl.download(url)
+				ydl.download(temp)
 			except:
 				pass
 
@@ -48,7 +49,7 @@ def main():
 			outdir = save_dir_video+key.replace(' ', '_')+'/'+i
 			if not os.path.exists(outdir):
 				os.makedirs(outdir)
-			else:
+			elif os.path.exists(outdir+'/000001.jpg'):
 				print('Skipping the video')
 				continue
 
@@ -70,7 +71,8 @@ def main():
 			if not os.path.exists(outdir):
 				os.makedirs(outdir)
 			
-			if os.path.exists(save_dir_audio+key.replace(' ', '_')+'/'+i+'.mp3'):
+			if os.path.exists(save_dir_audio+key.replace(' ', '_')+'/'+i+'.mp3') or 
+				not os.path.exists(save_dir_video+key.replace(' ', '_')+'/'+i+'.mp4'):
 				print('Skipping the audio')
 				continue
 			
