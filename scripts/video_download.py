@@ -4,12 +4,13 @@
 # pip install moviepy
 # pip install youtube-dl
 # sudo apt install ffmpeg
+# credits: https://stackoverflow.com/questions/26741116/python-extract-wav-from-video-file
+# credits: https://superuser.com/questions/135117/how-to-extract-one-frame-of-a-video-every-n-seconds-to-an-image/729351
 # ----------------------------------------------------------
 from __future__ import unicode_literals
 import youtube_dl
 import os
 import json
-import cv2
 import os
 from moviepy.editor import *
 import subprocess
