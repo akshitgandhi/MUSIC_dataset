@@ -44,16 +44,16 @@ def main():
 		url_list = []
 		for i in val:
 			url_list.append('https://www.youtube.com/watch?v='+i)
-		# downloadVideo(url_list, save_dir_video+key.replace(' ', '_'))
+		downloadVideo(url_list, save_dir_video+key.replace(' ', '_'))
 
 		print('Converting video to frames')
 		for i in val:
 			outdir = save_dir_video+key.replace(' ', '_')+'/'+i
 			if not os.path.exists(outdir):
 				os.makedirs(outdir)
-		# 	elif os.path.exists(outdir+'/000001.jpg'):
-		# 		print('Skipping the video')
-		# 		continue
+			elif os.path.exists(outdir+'/000010.jpg'):
+				print('Skipping the video')
+				continue
 
 			
 			print('[In progress] conversion for %s category, %s video', key, i)
