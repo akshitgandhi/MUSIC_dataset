@@ -3,6 +3,7 @@
 # Need to install:
 # pip install moviepy
 # pip install youtube-dl
+# sudo apt install ffmpeg
 # ----------------------------------------------------------
 from __future__ import unicode_literals
 import youtube_dl
@@ -11,6 +12,7 @@ import json
 import cv2
 import os
 from moviepy.editor import *
+import subprocess
 
 def downloadVideo(url_list, outdir):
 	if not os.path.exists(outdir):
@@ -42,27 +44,22 @@ def main():
 		url_list = []
 		for i in val:
 			url_list.append('https://www.youtube.com/watch?v='+i)
-		downloadVideo(url_list, save_dir_video+key.replace(' ', '_'))
+		# downloadVideo(url_list, save_dir_video+key.replace(' ', '_'))
 
 		print('Converting video to frames')
 		for i in val:
 			outdir = save_dir_video+key.replace(' ', '_')+'/'+i
 			if not os.path.exists(outdir):
 				os.makedirs(outdir)
-			elif os.path.exists(outdir+'/000001.jpg'):
-				print('Skipping the video')
-				continue
+		# 	elif os.path.exists(outdir+'/000001.jpg'):
+		# 		print('Skipping the video')
+		# 		continue
 
 			
-			vidcap = cv2.VideoCapture(save_dir_video+key.replace(' ', '_')+'/'+i+'.mp4')
-			success,image = vidcap.read()
-			count = 0
 			print('[In progress] conversion for %s category, %s video', key, i)
+			command = 'ffmpeg -i ' + save_dir_video+key.replace(' ', '_')+'/'+i+'.mp4' + ' -r 8 outputFile_%05d.jpg'
+			subprocess.call(command, shell=True)
 
-			while success:
-				cv2.imwrite(outdir + '/' + str(count).zfill(6)+'.jpg', image)
-				success,image = vidcap.read()
-				count += 1
 			print('[Done] conversion for %s category, %s video', key, i)
 
 		print('Converting mp4 to mp3')
