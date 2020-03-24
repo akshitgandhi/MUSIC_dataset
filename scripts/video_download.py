@@ -57,7 +57,7 @@ def main():
 
 			
 			print('[In progress] conversion for %s category, %s video', key, i)
-			command = 'ffmpeg -i ' + save_dir_video+key.replace(' ', '_')+'/'+i+'.mp4' + ' -r 8 '+  + outdir + '/%06d.jpg'
+			command = 'ffmpeg -i ' + save_dir_video+key.replace(' ', '_')+'/'+i+'.mp4' + ' -r 8 '+ outdir + '/%06d.jpg'
 			print(command)
 			subprocess.call(command, shell=True)
 
