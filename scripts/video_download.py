@@ -11,7 +11,6 @@ from __future__ import unicode_literals
 import youtube_dl
 import os
 import json
-import os
 from moviepy.editor import *
 import subprocess
 
