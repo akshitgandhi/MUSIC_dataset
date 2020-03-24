@@ -68,8 +68,8 @@ def main():
 			if not os.path.exists(outdir):
 				os.makedirs(outdir)
 			
-			if os.path.exists(save_dir_audio+key.replace(' ', '_')+'/'+i+'.mp3') or 
-				not os.path.exists(save_dir_video+key.replace(' ', '_')+'/'+i+'.mp4'):
+			if (os.path.exists(save_dir_audio+key.replace(' ', '_')+'/'+i+'.mp3') or 
+				not os.path.exists(save_dir_video+key.replace(' ', '_')+'/'+i+'.mp4')):
 				print('Skipping the audio')
 				continue
 			
